@@ -6,7 +6,7 @@
   <title>Aplikasi Daftar Nama</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* === Semua style asli Anda tetap === */
+    /* style tetap sama seperti sebelumnya */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       height: 100%;
@@ -298,7 +298,6 @@ async function pilihDatabaseLama() {
       excludeAcceptAllOption: true,
       multiple: false,
     });
-    // Tambahan untuk minta izin write lagi:
     await fileHandle.requestPermission({mode: 'readwrite'});
     await bacaDariFile();
     splash.style.display = 'none';
@@ -367,7 +366,6 @@ function renderCards(filter = '') {
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  masukFullscreen();
   const nama = document.getElementById('input-nama').value.trim();
   const alamat = document.getElementById('input-alamat').value.trim();
   const hp = document.getElementById('input-hp').value.trim();
@@ -382,7 +380,6 @@ form.addEventListener('submit', async (e) => {
 });
 
 async function hapusData(index) {
-  masukFullscreen();
   if (confirm("Yakin ingin menghapus data ini?")) {
     data.splice(index, 1);
     await simpanKeFile();
@@ -391,7 +388,6 @@ async function hapusData(index) {
 }
 
 function bukaModal(index) {
-  masukFullscreen();
   selectedIndex = index;
   aksiTextarea.value = data[index].aksi || "";
   modal.style.display = 'flex';
@@ -404,7 +400,6 @@ function tutupModal() {
 }
 
 async function simpanAksi() {
-  masukFullscreen();
   if (selectedIndex === null) return;
   data[selectedIndex].aksi = aksiTextarea.value.trim();
   await simpanKeFile();
@@ -413,7 +408,6 @@ async function simpanAksi() {
 }
 
 function tampilkanJumlah() {
-  masukFullscreen();
   jumlahText.textContent = `Jumlah nama yang berhasil ditulis adalah ${data.length}`;
   modalJumlah.style.display = 'flex';
 }
